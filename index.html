@@ -27,18 +27,18 @@
   <main>
     <div class="bill">
       <label for="bill">Bill</label>
-      <input type="text" id="bill" name="bill" required placeholder="0">
+      <input type="text" id="bill" name="bill" required placeholder="0" pattern="(\d+)\.([0-9]{0,2})" />
       Select Tip %
       <input class="" type="button" value="5%">
       <input class="" type="button" value="10%">
       <input class="" type="button" value="15%">
       <input class="" type="button" value="25%">
       <input class="" type="button" value="50%">
-      <input type="text" id="custom" name="custom" required placeholder="Custom">
-      
-      Custom
-      <input type="text" id="numberOfPeople" name="numberOfPeople" required placeholder="Number of People">
-      
+      <input type="text" id="custom" name="custom" required placeholder="Custom" pattern="(\d+)">
+
+      <label for="numberOfPeople">Number of People</label>
+      <input type="text" id="numberOfPeople" name="numberOfPeople" required placeholder="0" pattern="(\d+)">
+
     </div>
     <div class="tip">
 
@@ -58,6 +58,17 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script>
+    let bill = document.getElementById('bill');
+    bill.addEventListener("input", (e) => {
+      if (bill.validity.typeMismatch) {
+        bill.setCustomValidity('Type number like this 00.00')
+      }
+      else {
+        bill.setCustomValidity("");
+      }
+    })
+  </script>
 </body>
 
 </html>
